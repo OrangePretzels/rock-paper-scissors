@@ -1,3 +1,77 @@
 *{
     background-color: black;
+    color: white;
+    padding-top: 3rem;
+}
+
+h1,
+h2{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: orangered;
+}
+
+h2{
+    padding-top: 1rem;
+}
+
+.rps-btns{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.rock,
+.paper,
+.scissors {
+    border: solid 5px orangered;
+    padding: 1rem;
+    width: 10rem;
+    height: 5rem;
+    color: orangered;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+}
+
+.rock:hover,
+.paper:hover,
+.scissors:hover{
+    background-color: purple;
+    /* cursor: wait; */
+}
+
+.result-box{
+    text-align: center;
+    font-family: serif;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.player-wins,
+.ties,
+.computer-wins,
+.player-roll,
+.computer-roll
+{
+    color: orangered;
+}
+
+.selection-box{
+    display: grid;
+    justify-content: center;
+}
+
+.winner-box{
+    display: flex;
+    font-size: 5rem;
+    color: hotpink;
+    justify-content: center;
+}
+
+.player-wins-number,
+.ties-number,
+.computer-wins-number{
+    color: hotpink;
 }

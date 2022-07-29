@@ -1,54 +1,136 @@
 let playerScore = 0;
 let computerScore = 0;
+let tiesScore = 0;
+
+let playerWins = document.querySelector('.player-wins-number')
+playerWins.innerHTML = playerScore;
+
+let gameTies = document.querySelector('.ties-number')
+gameTies.innerHTML = tiesScore;
+
+let computerWins = document.querySelector('.computer-wins-number')
+computerWins.innerHTML = computerScore;
+
+let rb = document.querySelector('.rock')
+let pb = document.querySelector('.paper')
+let sb = document.querySelector('.scissors')
+let wb = document.querySelector('.winner-box')
+
 
 function getComputerChoice(){
     let answer = Math.floor(Math.random()*3+1)
     if (answer === 1){
+        document.querySelector('.computer-roll').textContent = "The computer selected Rock!";
         return "rock"
     }
     else if (answer === 2){
+        document.querySelector('.computer-roll').textContent = "The computer selected Rock!";
         return "paper"
-    } else {
+    } else if (answer === 3){
+        document.querySelector('.computer-roll').textContent = "The computer selected Rock!";
         return "scissors"
     }
+    return 'borked'
 }
 
 function playRound(playerSelection, computerSelection){
     if (playerSelection === computerSelection){
-        return "it's a draw"
+        tiesScore++;
+        gameTies.innerHTML = tiesScore;
     } else if(playerSelection === "rock" && computerSelection === "scissors" ){
-        return "player wins rock beats scissors" + playerScore++
+        playerScore++;
+        playerWins.innerHTML = playerScore;
+        if(playerScore === 5){
+            rb.disabled = true
+            pb.disabled = true
+            sb.disabled = true
+            document.querySelector('.winner-box').textContent = "Player Wins"
+        }
     } else if(playerSelection === "scissors" && computerSelection === "paper" ){
-        return "player wins scissors beats paper" + playerScore++
+        playerScore++;
+        playerWins.innerHTML = playerScore;
+        if(playerScore === 5){
+            rb.disabled = true
+            pb.disabled = true
+            sb.disabled = true
+            document.querySelector('.winner-box').textContent = "Player Wins"
+        }
     } else if(playerSelection === "paper" && computerSelection === "rock" ){
-        return "player wins paper beats rock" + playerScore++
+        playerScore++;
+        playerWins.innerHTML = playerScore;
+        if(playerScore === 5){
+            rb.disabled = true
+            pb.disabled = true
+            sb.disabled = true
+            document.querySelector('.winner-box').textContent = "Player Wins"
+        }
     } else if (computerSelection === "rock" && playerSelection === "scissors" ){
-        return "computer wins rock beats scissors" + computerScore++
+        computerScore++;
+        computerWins.innerHTML = computerScore;
+        if(computerScore === 5){
+            rb.disabled = true
+            pb.disabled = true
+            sb.disabled = true
+            document.querySelector('.winner-box').textContent = "Computer Wins"
+        }
     } else if (computerSelection === "scissors" && playerSelection === "paper" ){
-        return "computer wins scissors beats paper" + computerScore++
+        computerScore++;
+        computerWins.innerHTML = computerScore;
+        if(computerScore === 5){
+            rb.disabled = true
+            pb.disabled = true
+            sb.disabled = true
+            document.querySelector('.winner-box').textContent = "Computer Wins"
+        }
     } else if (computerSelection === "paper" && playerSelection === "rock" ){
-        return "computer wins paper beats rock" + computerScore++
-    }
-    return "invalid value try again"
-}
-
-function game(){
-    for (let i = 0; i < 5; i++) {
-        let playerInput = prompt("Choose Rock Paper Scissors").toLowerCase();
-        let computerInput = getComputerChoice();
-        console.log(playerInput, computerInput)
-        console.log(playRound(playerInput, computerInput));
+        computerScore++;
+        computerWins.innerHTML = computerScore;
+        if(computerScore === 5){
+            rb.disabled = true
+            pb.disabled = true
+            sb.disabled = true
+            document.querySelector('.winner-box').textContent = "Computer Wins"
+        }
     }
 }
-game()
 
-function result(){
-if (playerScore === computerScore){
-    return "the series is tied at " + playerScore + " " + computerScore
-} else if (playerScore > computerScore){
-    return "you win the series " + playerScore + " " + computerScore
-} else if (computerScore > playerScore){
-    return "the computer wins the series " + computerScore + " " + playerScore
-}
-}
-console.log(result())
+
+
+let rockbtn = document.querySelector('.rock').addEventListener('click', function () {
+    document.querySelector('.player-roll').textContent = "You've selected rock!";
+
+    let playerSelection = 'rock'
+
+    let computerSelection = getComputerChoice();
+
+    console.log(playRound(playerSelection, computerSelection));
+
+    document.querySelector('.computer-roll').textContent = "The computer selected " + computerSelection + "!";
+
+})
+
+let paperbtn = document.querySelector('.paper').addEventListener('click', function () {
+    document.querySelector('.player-roll').textContent = "You've selected paper!";
+
+    let playerSelection = 'paper'
+
+    let computerSelection = getComputerChoice();
+
+    console.log(playRound(playerSelection, computerSelection));
+
+    document.querySelector('.computer-roll').textContent = "The computer selected " + computerSelection + "!";
+
+})
+
+let scissorsbtn = document.querySelector('.scissors').addEventListener('click', function () {
+    document.querySelector('.player-roll').textContent = "You've selected scissors!";
+
+    let playerSelection = 'scissors'
+
+    let computerSelection = getComputerChoice();
+
+    console.log(playRound(playerSelection, computerSelection));
+
+    document.querySelector('.computer-roll').textContent = "The computer selected " + computerSelection + "!"
+
+})
